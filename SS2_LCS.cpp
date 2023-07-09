@@ -14,3 +14,6 @@ int main(){
     dp.resize(m,vector<int>(n,-1));
     cout<<LCS(m-1,n-1);
 }
+
+
+// for LPS i.e pallandromic   reverse the given one string and find LCS of both given and reversed string...
