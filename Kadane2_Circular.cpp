@@ -9,6 +9,7 @@ int main() {
   dp[0]=kid[0];
   int sum=0, k=dp[0];
   sum+=kid[0];
+  // running reg Kadane
   for(int i=1;i<n;i++){
     sum+=kid[i];
     if(dp[i-1]<0)dp[i]=kid[i];
@@ -24,6 +25,7 @@ int main() {
   
   int p=dp[0];
 //   cout<<"p "<<p<<"\n";
+  // running min kadane using negative values.
   for(int i=1;i<n;i++){
     dp[i]=max(kid[i],dp[i-1]+kid[i]);
     p=max(p,dp[i]);
