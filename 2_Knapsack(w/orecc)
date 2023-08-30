@@ -1,0 +1,21 @@
+#include<bits/stdc++.h>
+using namespace std;
+vector<int>cost,prod;
+vector<vector<int>> prodsum;
+int main(){
+    int n,costsum;cin>>n>>costsum;
+    cost.resize(n+1);prod.resize(n+1);
+    prodsum.resize(n+1,vector<int>(costsum+1,0));
+    for(int i=1;i<=n;i++){
+        cin>>cost[i]>>prod[i];
+    }
+    for(int i=1;i<=n;i++){
+        for(int i_costsum=0;i_costsum<=costsum;i_costsum++){
+          if(cost[i]>i_costsum)prodsum[i][i_costsum]=prodsum[i-1][i_costsum];
+          else{
+            prodsum[i][i_costsum]=max(prodsum[i-1][i_costsum],prod[i]+prodsum[i-1][i_costsum-cost[i]]);
+          }
+        }
+    }
+    cout<<prodsum[n][costsum];
+}
